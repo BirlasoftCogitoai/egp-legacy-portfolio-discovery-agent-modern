@@ -1,0 +1,30 @@
+spring:
+              application:
+                name: egp-modern-service
+              datasource:
+                url: jdbc:postgresql://localhost:5432/egp_modern
+                username: ${DB_USERNAME:egp_user}
+                password: ${DB_PASSWORD:egp_password}
+                driver-class-name: org.postgresql.Driver
+
+              jpa:
+                hibernate:
+                  ddl-auto: update
+                show-sql: false
+                properties:
+                  hibernate:
+                    dialect: org.hibernate.dialect.PostgreSQLDialect
+
+            server:
+              port: 8080
+              servlet:
+                context-path: /api
+
+            management:
+              endpoints:
+                web:
+                  exposure:
+                    include: health,info,metrics
+              endpoint:
+                health:
+                  show-details: when-authorized
